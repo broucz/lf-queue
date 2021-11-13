@@ -1,0 +1,12 @@
+[package]
+name = "lf-queue"
+description = "A lock-free multi-producer multi-consumer unbounded queue."
+version = "0.1.0"
+license = "MIT"
+edition = "2021"
+authors = ["Pierre Brouca <broucapierre@gmail.com>"]
+categories = ["concurrency", "data-structures"]
+keywords = ["spsc", "mpsc", "spmc",  "mpmc",]
+
+[target.'cfg(loom)'.dependencies]
+loom = "0.5"
