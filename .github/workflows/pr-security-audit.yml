@@ -1,0 +1,21 @@
+name: PR Security Audit
+
+on:
+  push:
+    paths:
+      - '**/Cargo.toml'
+  pull_request:
+    paths:
+      - '**/Cargo.toml'
+
+jobs:
+  security-audit:
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, 'ci skip')"
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Audit Check
+        uses: actions-rs/audit-check@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
